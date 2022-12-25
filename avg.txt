@@ -1,0 +1,55 @@
+
+n=int(input("enter number of students in class "))
+marks=[]
+
+def enter_marks():
+    for i in range(n):
+        a=int(input("enter marks scored by students "))
+        marks.append(a)
+    print("marks scored by the students are ",marks)
+
+def avg_marks():
+    sum=0
+    for i in marks:
+        if i!=-1:
+            sum=sum+i
+    avg=sum/len(marks)
+    print("average marks scored by students in class test",avg)
+
+def max_marks():
+    max=marks[0]
+    for i in marks:
+        if i>max:
+            max=i
+    print("maximum marks scored by student in class test",max )
+
+def min_marks():
+    min=marks[0]
+    for i in marks:
+        if i<min:
+            if i!=-1:
+                min=i
+    print("mininum marks scored by students in class test",min)
+
+def high_freq():
+    d=[]
+    for i in marks:
+        if i not in d:
+            d.append(i)
+    d.sort()
+    for j in d:
+        print("number of times marks are repeated is",j ,"marks=",marks.count(j))
+
+def absent():
+    ab=0
+    for i in marks:
+        if i==-1:
+            ab=ab+1
+    print("number of students absent for class test are",ab)
+
+enter_marks()
+avg_marks()
+max_marks()
+min_marks()
+high_freq()
+absent()
