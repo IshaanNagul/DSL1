@@ -1,40 +1,46 @@
+rn = []
+pr = []
+ab = []
 
-def partition(arr, low, high):
-    i = (low - 1)
-    pivot = arr[high]  # pivot element
-    for j in range(low, high):
-        # If current element is smaller
-        if arr[j] <= pivot:
-            # increment
-            i = i + 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return (i + 1)
+r = int(input("Enter the number of students of the class:"))
+for i in range(r):
+    rollno = int(input("Enter roll number of the student:"))
+    rn.append(rollno)
+    rn.sort()
 
+print("Roll number of students are:", rn)
 
-# sort
-def quickSort(arr, low, high):
-    if low < high:
-        # index
-        pi = partition(arr, low, high)
-        # sort the partitions
-        quickSort(arr, low, pi - 1)
-        quickSort(arr, pi + 1, high)
+p = int(input("Enter the number of students who attended the training program:"))
+for i in range(p):
+    present = int(input("Enter roll number of the student who attended the session:"))
+    pr.append(present)
+    pr.sort()
+
+print("Roll number of students who attended the session are:", pr)
 
 
 
-n=int(input("Enter the number of students of the class:"))
-arr=[]
-for i in range(n):
-    m=float(input("Enter the percentage of each student:"))
-    arr.append(m)
-print("Marks of students are:", arr)
+def linear():
+    c = int(input("Enter a value to be searched:"))
+    if c in pr:
+        print(c, "is present for the session")
+    else:
+        print(c, "is absent for the session")
 
-quickSort(arr, 0, n - 1)
-print("Sorted array is:")
-for i in range(n):
-    print(arr[i],end=",")
+def sentinal():
+    i = 0
+    rollno = int(input("Enter roll no of student to check present:"))
+    pr.append(rollno)
+    while pr[i] != rollno:
+        i += 1
+    if i == len(pr) - 1:
+        return print(rollno,"is not present for the session")
+    else:
+        return print(rollno,"is present for the session")
 
-print("\n")
-top_five=arr[n:n-6:-1]
-print("top_five is",top_five)
+print("Menu:\n1.Linear Search\n2.Sentinal Search")
+n=int(input("Enter choice:"))
+if n==1:
+    linear()
+if n==2:
+    sentinal()
